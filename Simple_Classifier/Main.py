@@ -7,7 +7,6 @@ Created on Thu Mar 19 18:48:49 2020
 """
 
 
-from Management import Management
 import numpy as np
 from arguments import ArgParser
 import csv

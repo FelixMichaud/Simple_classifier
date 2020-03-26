@@ -11,7 +11,10 @@ from Management import Management
 import numpy as np
 import pickle
 
- 
+ '''
+Save the 4000/0.25s audio segments in a pickle file with label
+
+'''
 
 def trames(audio, window, nwin, nstep, fs):
     # hop_size in ms   

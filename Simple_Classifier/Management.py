@@ -32,6 +32,8 @@ class Management():
         audio_files = self.create_list(nm_folders, ".wav")
         if len(audio_files) > nb:
             return audio_files[:nb]
+        else:
+            return None
     
     
     def load_file(self, file, sr):

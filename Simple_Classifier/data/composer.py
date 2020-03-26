@@ -60,7 +60,9 @@ def composer(management, bird_folder, n_train):
     """
     audio_files = management.audio_number(bird_folder, n_train)
     combined_files = list(permutations(audio_files, 3))
-    nb_audio = len(combined_files)   
+    nb_audio = len(combined_files)  
+    print(bird_folder, "bird_folder")
+    print(nb_audio,"nb_audio")
     random.shuffle(combined_files)
     
     trainset_ind = round(nb_audio*0.8)
@@ -107,8 +109,9 @@ if __name__ == '__main__':
     bird_folders.sort()
     management = Management()
 
-for bird in bird_folders:
-    train, validation, test = composer(management, bird, n_train=20)
-    saver(management, path, sr, dataset_train_path, n_files=4, list_files=train)
-    saver(management, path, sr, dataset_validation_path, n_files=4, list_files=validation)
-    saver(management, path, sr, dataset_test_path, n_files=4, list_files=test)
+    
+    for bird in bird_folders:
+        train, validation, test = composer(management, bird, n_train=18)
+        saver(management, path, sr, dataset_train_path, n_files=len(train), list_files=train)
+        saver(management, path, sr, dataset_validation_path, n_files=len(validation), list_files=validation)
+        saver(management, path, sr, dataset_test_path, n_files=len(test), list_files=test)
