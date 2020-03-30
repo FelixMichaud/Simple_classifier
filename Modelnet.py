@@ -5,7 +5,6 @@ Created on Mon Mar 23 18:32:28 2020
 
 @author: felix
 """
-import torch
 import torch.nn as nn
 import numpy as np
 
@@ -40,7 +39,7 @@ class Classifier(nn.Module):
     
         self.norm3    = nn.BatchNorm1d(64)
         self.linear1 = nn.Linear(in_features=119, out_features=64)
-        self.linear2 = nn.Linear(in_features=64**2, out_features=n_classes)
+        self.linear2 = nn.Linear(in_features=64, out_features=25)
         self.softmax = nn.Softmax()
         self.relu    = nn.ReLU()
         self.dropout = nn.Dropout(p=0.25)
@@ -56,7 +55,6 @@ class Classifier(nn.Module):
         x5 = self.relu(self.ConvL3(x4))
         x5 = self.norm3(x5)
         x6 = self.dropout(self.relu(self.linear1(x5)))
-        x6 = torch.flatten(x6, start_dim=1)
         x7 = self.dropout((self.linear2(x6)))
         #classes = self.softmax(x7)
         return x7

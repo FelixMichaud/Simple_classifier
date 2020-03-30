@@ -108,10 +108,12 @@ if __name__ == '__main__':
     bird_folders = glob(path + "/raw_data/*/")
     bird_folders.sort()
     management = Management()
-
     
-    for bird in bird_folders:
-        train, validation, test = composer(management, bird, n_train=18)
-        saver(management, path, sr, dataset_train_path, n_files=len(train), list_files=train)
-        saver(management, path, sr, dataset_validation_path, n_files=len(validation), list_files=validation)
-        saver(management, path, sr, dataset_test_path, n_files=len(test), list_files=test)
+    train, validation, test = composer(management, bird_folders[0], n_train=26)
+    print((len(train)*1.5)/60/60)
+    
+    # for bird in bird_folders:
+    #     train, validation, test = composer(management, bird, n_train=18)
+    #     saver(management, path, sr, dataset_train_path, n_files=len(train), list_files=train)
+    #     saver(management, path, sr, dataset_validation_path, n_files=len(validation), list_files=validation)
+    #     saver(management, path, sr, dataset_test_path, n_files=len(test), list_files=test)

@@ -28,8 +28,7 @@ class Dataset(data.Dataset):
         # Select sample
         audio_data = torch.FloatTensor(self.list_IDs[index])
         label = self.labels[index]
-        vector_label = np.zeros((self.nb_class), dtype=np.int64)
-        vector_label[label] = 1
-        print((vector_label), 'label shape in dataset')
+        # vector_label = np.zeros((self.nb_class), dtype=np.int64)
+        # vector_label[label] = 1
 
-        return audio_data, vector_label
+        return audio_data, label

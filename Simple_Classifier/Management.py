@@ -30,10 +30,10 @@ class Management():
     
     def audio_number(self, nm_folders, nb):
         audio_files = self.create_list(nm_folders, ".wav")
-        if len(audio_files) >= nb:
+        if len(audio_files) > nb:
             return audio_files[:nb]
         else:
-            return []
+            return None
     
     
     def load_file(self, file, sr):
